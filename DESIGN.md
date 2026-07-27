@@ -1,5 +1,5 @@
 ---
-name: Kinetic Noir
+name: Skala — Kinetic Noir
 colors:
   surface: '#1f0f0d'
   surface-dim: '#1f0f0d'
@@ -106,63 +106,33 @@ spacing:
 
 ## Brand & Style
 
-This design system embodies a high-octane, tech-forward marketing aesthetic. It leverages a "Dark Tech" style that prioritizes deep immersion, high contrast, and cinematic energy. The mood is authoritative yet innovative, designed to evoke feelings of precision, speed, and premium quality.
+**Skala** ist ein Coaching für Gründer von Social Media Agenturen. Das Design folgt einem
+ruhigen, zentrierten "Dark Studio"-Stil: fast schwarzer Hintergrund, ein großer, weich
+verlaufender Farbnebel (Aurora) hinter der Hero-Sektion und viel Leerraum.
 
-The visual narrative is built on the tension between an expansive, near-black void and surgical strikes of vibrant red-orange light. It utilizes spacious layouts, generous negative space, and "glow-morphism" to create depth without relying on traditional skeuomorphism. The target audience expects a cutting-edge partner that balances raw power with sophisticated execution.
+Die Farbwelt der Vorgänger-Website bleibt unverändert: Primär `#ff3b30` mit
+`#ff5545` / `#ff8c00` in den Verläufen, Hintergrund `#0a0a0a`, Text `#fcdbd6`.
+Neu ist die Anwendung: statt vieler roter Akzentflächen wird die Farbe fast
+ausschließlich im Aurora-Glow, in Icons, in Mikrolabels und im Primär-Button eingesetzt.
 
-## Colors
+## Typografie
 
-The palette is strictly controlled to maintain a high-end, focused atmosphere. The background is a deep, singular black to maximize the luminance of the accent colors. 
+**Space Grotesk** für alle Displays und Headlines, sehr eng gesetzt (-0.045em),
+Gewicht 500, Zeilenhöhe 0.95 — der Wortmarken-Look aus dem Hero.
+**Inter** für Fließtext, meist in `text-white/60` für ruhige Lesbarkeit.
+Mikrolabels (`.mono-label`) sind 11px, uppercase, 0.18em Laufweite.
 
-- **Primary:** A high-vibrancy red-orange used for calls to action, progress indicators, and critical highlights.
-- **Accents:** Gradients between the primary shades are used to create "light leaks" and glows, simulating a high-tech hardware interface.
-- **Neutrals:** Dark grey surfaces create structural hierarchy, while light grey text ensures readability without the harshness of pure white on black.
+## Layout
 
-## Typography
+Zentrierte Hero-Sektionen mit voller Viewport-Höhe, danach linksbündige
+Sektions-Header (Mikrolabel + große Headline) und Karten-Grids.
+Container max 1200px, Sektionsabstand 140px.
 
-Typography is a primary structural element. **Space Grotesk** provides a technical, geometric edge for headlines, utilizing tight letter-spacing and massive scales for a "display" feel. **Inter** handles all functional and body copy, chosen for its extreme legibility and neutral, systematic character.
+## Komponenten
 
-Large display type should often use a slight "inner glow" or white-to-light-grey gradient to feel integrated into the dark environment. Labels and overlines should always be uppercase with increased tracking to denote technical metadata.
-
-## Layout & Spacing
-
-The layout follows a 12-column fluid grid system with significant vertical "breathing room" between sections (120px+). Content should feel uncrowded, mimicking the premium feel of a high-end editorial or luxury tech brand.
-
-- **Desktop:** 12 columns, 24px gutters, max-width of 1280px.
-- **Tablet:** 8 columns, 24px gutters, fluid width.
-- **Mobile:** 4 columns, 20px gutters, fluid width.
-
-Elements within cards use a tight 8px-based spacing system to maintain a "dense information" feel inside an otherwise "spacious" layout.
-
-## Elevation & Depth
-
-This system avoids traditional drop shadows in favor of **Tonal Layering** and **Luminescence**. 
-
-1.  **Base Layer:** The `#0a0a0a` background.
-2.  **Surface Layer:** Dark grey cards (`#1a1a1a`) with a subtle `1px` border in `#2a2a2a`.
-3.  **Accent Depth:** High-priority cards or buttons feature a "Red Glow"—a soft, diffused outer shadow using the primary color at 15-20% opacity.
-4.  **Glassmorphism:** Navigation bars and floating controls use a 20px backdrop blur with a 10% white overlay to feel like precision-machined glass.
-
-## Shapes
-
-The shape language is "Sophisticated Geometric." We use a consistent `0.5rem` (8px) base radius for standard inputs and small UI elements, but significantly larger radii for structural containers.
-
-- **Standard Cards:** `1.5rem` (24px) to create a friendly but professional "modern tech" silhouette.
-- **Buttons:** Fully pill-shaped (`999px`) to distinguish interactive elements from informational cards.
-- **Icons:** Lean, 2px stroke-width icons with slightly rounded caps to match the typography.
-
-## Components
-
-### Buttons
-- **Primary:** Pill-shaped, Primary Gradient background, white text. Features a 10px blurred red glow on hover.
-- **Secondary:** Pill-shaped, ghost style with a 1px border (`#2a2a2a`), white text. Background shifts to a subtle dark grey on hover.
-
-### Cards
-- **Feature Cards:** `#1a1a1a` background, 24px padding, `rounded-2xl`. Borders are `#2a2a2a`. 
-- **Stats Cards:** Minimalist, featuring large Space Grotesk numbers and the primary color for the metric value.
-
-### Input Fields
-- Dark backgrounds (`#050505`), 1px subtle borders. On focus, the border turns to the primary red and a soft red outer glow is applied.
-
-### Chips & Tags
-- Small, uppercase text within a `#2a2a2a` container. For "Active" or "Live" status, a small 8px pulsing red dot is included to the left of the text.
+- **Pill-Nav:** zentriert schwebend, 20px Backdrop-Blur, aktiver Link mit `bg-white/10`.
+- **Aurora:** `.aurora` erzeugt zwei animierte, weich geblurrte Farbkreise; mit
+  `.vignette` darüber blendet der Rand sauber ins Schwarz aus.
+- **Ghost-Word:** riesiger Markenname bei 3,5% Deckkraft als Sektionshintergrund.
+- **Buttons:** `.btn-ghost` (Glas, 1px Weißrand) und `.btn-primary` (Rot mit Glow bei Hover), beide vollständig pill-förmig.
+- **Karten:** `#141414`, 1px Weißrand bei 6%, Radius 1.5rem, Rand färbt sich bei Hover rot.
