@@ -13,15 +13,24 @@ kein „high-octane"-Look, keine Coaching-Ästhetik.
 
 Sieben Tokens, definiert in `:root` in `styles.css`:
 
-| Token | Wert | Rolle |
+| Token | Wert | Rolle (Selektoren in `styles.css`) |
 |---|---|---|
-| `--bg` | `#F7F9FC` | Seitenhintergrund |
-| `--flaeche` | `#FFFFFF` | Flächen: Karten, Knöpfe, Kopfzeile |
-| `--rand` | `#E3E8EF` | Ränder von Karten, Knöpfen, Kopf- und Fußzeile |
-| `--text` | `#0A2540` | Fließtext, Überschriften, Marke |
-| `--text-leise` | `#5B6B7F` | Nebentext: Hero-Lead, Navigation, Fußzeile, Listen |
-| `--primaer` | `#1B5FCC` | Primärfarbe: Labels, Links, Primärknopf, Bild-Überlagerung |
-| `--akzent` | `#E8F0FE` | Hell-Akzent: `.abschnitt--akzent`, Verlauf-Rückfallebene für Bilder |
+| `--bg` | `#F7F9FC` | Seitenhintergrund (`body`, Zeile 21) |
+| `--flaeche` | `#FFFFFF` | Flächen von Knöpfen und Karten (`.knopf`, Zeile 69; `.karte`, Zeile 87) |
+| `--rand` | `#E3E8EF` | Ränder von Knöpfen, Karten, Kopf- und Fußzeile (`.knopf`, Zeile 68; `.karte`, Zeile 88; `.kopf`, Zeile 135; `.fuss`, Zeile 160) |
+| `--text` | `#0A2540` | Textfarbe von `body` (Zeile 22) — davon erben `h1`–`h3` ihre Farbe, da sie keine eigene setzen. Zusätzlich explizit bei `.knopf` (Zeile 70), `.marke` (Zeile 150), `.nav a:hover` (Zeile 156), `.fuss__marke` (Zeile 168) |
+| `--text-leise` | `#5B6B7F` | Nebentext: `.nav a` (Zeile 155), `.fuss` (Zeile 162), `.hero__lead` (Zeile 187), `.hero__hinweis` (Zeile 188), `.liste` (Zeile 200), `.rechtstext p`/`.rechtstext li` (Zeile 210) |
+| `--primaer` | `#1B5FCC` | `a` (Zeile 42), `.label` (Zeile 59), Randfarbe von `.knopf:hover` (Zeile 76), Hintergrund/Rand von `.knopf-primaer` (Zeile 79–80), Verlauf-Endfarbe und Überlagerung von `.bild` (Zeile 102, 117) |
+| `--akzent` | `#E8F0FE` | Hintergrund von `.abschnitt--akzent` (Zeile 52), Verlauf-Startfarbe von `.bild` (Zeile 102) |
+
+**Kopfzeile — Sonderfall, kein Token:** `.kopf` (Zeile 129–136) sitzt als
+klebende Leiste über dem Inhalt (`position: sticky; top: 0`) mit
+`backdrop-filter: blur(12px)`. Ihr Hintergrund läuft **nicht** über ein
+Farb-Token, sondern ist hart codiert: `background: rgba(247, 249, 252, 0.85)`
+(Zeile 134) — das ist `--bg` (`#F7F9FC`) mit 85 % Deckkraft, aber direkt als
+Zahlenwert geschrieben statt als `var(--bg)`. Wer die Kopfzeile farblich
+anpassen will, findet die wirksame Regel also nicht über `--bg` oder
+`--flaeche`, sondern muss Zeile 134 in `styles.css` direkt bearbeiten.
 
 Wichtig: LinkedIns exaktes Markenblau `#0A66C2` wird bewusst **nicht** verwendet.
 `--primaer` (`#1B5FCC`) liegt nah genug an dieser Farbfamilie, um die gewünschte
@@ -78,7 +87,7 @@ Ausschlusskriterien für Bildmotive:
 
 Aus `styles.css`:
 
-- `.container` — zentrierter Layoutrahmen, `max-width: var(--breite)`, seitliches Padding 24px
+- `.container` — zentrierter Layoutrahmen, `max-width: var(--breite)`, `padding: 0 24px`
 - `.label` — Versal-Label: 12px, fett, `letter-spacing: 0.14em`, `text-transform: uppercase`, in `--primaer`
 - `.knopf` — Grundknopf: Pill-Form, weiße Fläche, Rand in `--rand`, färbt den Rand bei Hover in `--primaer`
 - `.knopf-primaer` — gefüllte Variante von `.knopf`: Hintergrund und Rand in `--primaer`, weiße Schrift
@@ -94,4 +103,5 @@ Kopf- und Fußzeile (`.kopf`, `.kopf__inner`, `.marke`, `.nav`, `.fuss`,
 `.fuss__marke`, `.fuss__links`) sowie die Hero-Klassen (`.hero`, `.hero__inner`,
 `.hero__lead`, `.hero__hinweis`, `.hero__bild`) und `.rechtstext` für die
 Rechtsseiten runden das System ab, folgen aber denselben Tokens und Bausteinen
-oben.
+oben — mit der einen Ausnahme, dass `.kopf` seinen Hintergrund hart codiert
+statt über ein Token setzt (siehe Abschnitt „Farben" oben).
