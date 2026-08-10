@@ -259,3 +259,12 @@ a { color: var(--primaer); }
   color: var(--text-leise);
   max-width: 80ch;
 }
+
+.ueber__inner { max-width: 70ch; }
+
+.ueber__haltung {
+  border-left: 3px solid var(--primaer);
+  padding-left: 20px;
+  color: var(--text-leise);
+  margin-top: 32px;
+}
