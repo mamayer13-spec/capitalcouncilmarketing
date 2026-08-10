@@ -236,8 +236,15 @@ git commit -m "Prüfskript für die Zusagen der Design-Spec anlegen"
 
 **Schnittstellen:**
 - Erzeugt: `assets/fonts/fonts.css` mit `@font-face`-Regeln für `Source Serif 4`
-  (Gewichte 400, 600, 700) und `Inter` (400, 500, 600). Alle `url()` zeigen relativ auf
+  (nutzbar in 400, 600, 700) und `Inter` (400, 500, 600). Alle `url()` zeigen relativ auf
   Dateien im selben Verzeichnis. `styles.css` bindet diese Datei in Aufgabe 3 ein.
+
+**Achtung, hier lag ein Fehler in einer früheren Fassung dieses Plans:** Google liefert
+für beide Familien **variable Schriften**. Wird je Gewicht ein `@font-face`-Block mit
+einem **einzelnen** `font-weight`-Wert erzeugt, zeigen alle Blöcke auf dieselbe Datei,
+der Browser steuert die Gewichtsachse nie an und rendert überall die Standardinstanz —
+Überschriften in 600 sähen aus wie Fließtext in 400. Deshalb wird der Achsenbereich
+angefordert und im `@font-face` als **Spanne** deklariert (`font-weight: 100 900`).
 
 - [ ] **Schritt 1: Verzeichnis anlegen und Schrift-CSS holen**
 
@@ -246,12 +253,13 @@ cd ~/Downloads/capitalcouncilmarketing
 mkdir -p assets/fonts assets/img tools
 UA='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
 curl -s -H "User-Agent: $UA" \
-  'https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Inter:wght@400;500;600&display=swap' \
+  'https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,200..900&family=Inter:wght@100..900&display=swap' \
   -o assets/fonts/fonts.css
 head -5 assets/fonts/fonts.css
 ```
 
-Erwartet: `@font-face`-Blöcke mit `url(https://fonts.gstatic.com/...)` und `format('woff2')`.
+Erwartet: `@font-face`-Blöcke mit `url(https://fonts.gstatic.com/...)`, `format('woff2')`
+und `font-weight` als **Spanne** (`100 900` bzw. `200 900`) — nicht als Einzelwert.
 
 - [ ] **Schritt 2: Schriftdateien herunterladen und Pfade lokal umbiegen**
 
@@ -263,9 +271,19 @@ done
 sed -i '' -E 's#https://fonts\.gstatic\.com/[^)]*/#./#g' assets/fonts/fonts.css
 ls assets/fonts/*.woff2 | wc -l
 grep -c 'gstatic' assets/fonts/fonts.css || true
+grep -o 'font-weight: [^;]*' assets/fonts/fonts.css | sort -u
 ```
 
-Erwartet: mindestens 6 `.woff2`-Dateien; die `grep`-Zählung auf `gstatic` ergibt `0`.
+Erwartet: die `grep`-Zählung auf `gstatic` ergibt `0`, und `font-weight` erscheint
+ausschließlich als Spanne (`100 900` für Inter, `200 900` für Source Serif 4). Taucht ein
+Einzelwert auf, wurde die falsche Fassung geladen — dann den Aufruf aus Schritt 1 prüfen.
+
+- [ ] **Schritt 2b: Probeseite anlegen**
+
+`assets/fonts/probe.html` zeigt beide Familien in allen sechs verlangten Gewichten mit
+demselben Beispielsatz. Damit lässt sich im Browser mit eigenen Augen bestätigen, dass
+die Gewichte tatsächlich unterschiedlich aussehen. Die Datei ist ein Werkzeug, wird
+mitcommittet, aber nirgends von der Website verlinkt.
 
 - [ ] **Schritt 3: Committen**
 
