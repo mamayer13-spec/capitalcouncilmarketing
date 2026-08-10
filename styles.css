@@ -1137,3 +1137,25 @@ body::before { animation: treiben 26s ease-in-out infinite alternate; }
 .fuss__kontakt { margin: 10px 0 0; }
 .fuss__kontakt a { color: var(--text-leise); text-decoration: none; }
 .fuss__kontakt a:hover { color: var(--primaer); }
+
+.fuss__sozial { display: flex; gap: 12px; margin-top: 20px; }
+
+.fuss__sozial a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--rand);
+  border-radius: 50%;
+  color: var(--text-leise);
+  transition: color var(--zeit) var(--kurve),
+              border-color var(--zeit) var(--kurve),
+              transform var(--zeit) var(--kurve);
+}
+
+.fuss__sozial a:hover {
+  color: var(--primaer);
+  border-color: var(--primaer);
+  transform: translateY(-2px);
+}

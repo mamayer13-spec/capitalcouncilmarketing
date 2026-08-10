@@ -19,7 +19,8 @@ VERBOTEN = ["Lena", "Marco", "+133", "3.4x", "3,4x", "67 Tage", "92%", "92 %",
             "Suchmaschinen-Platzierung", "Case Stud"]
 PLATZHALTER = ["TODO", "TBD", "Lorem ipsum", "XXX", "PLATZHALTER"]
 # Erlaubte externe Ziele: nur nutzerinitiiert.
-ERLAUBT_EXTERN = ["calendly.com", "mailto:", "tel:"]
+ERLAUBT_EXTERN = ["calendly.com", "instagram.com", "linkedin.com",
+                  "mailto:", "tel:"]
 # Einzige zulaessigen Geld- und Zeitraumangaben auf index.html.
 ERLAUBTE_ZAHLEN = ["3.000 €", "8.000 €", "6 Monate"]
 
