@@ -8,13 +8,20 @@ import sys
 WURZEL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SEITEN = ["index.html", "impressum.html", "datenschutz.html", "agb.html",
           "haftungsausschluss.html"]
+CSS_DATEIEN = ["styles.css", "assets/fonts/fonts.css"]
 
 # Belege, die laut Auftraggeber erfunden sind und nirgends mehr auftauchen duerfen.
 VERBOTEN = ["Lena", "Marco", "+133", "3.4x", "3,4x", "67 Tage", "92%", "92 %",
-            "Skala", "Kinetic Noir", "Space Grotesk"]
+            "Skala", "Kinetic Noir", "Space Grotesk",
+            # Agenturvokabular: Diese Seite beschreibt ein Coaching, keine Agentur.
+            "SEO", "Paid Media", "CPC", "CPL", "Werbekonto", "Werbebudget",
+            "Kampagne", "Retainer", "Ranking", "Ads-Management", "Newsletter",
+            "Suchmaschinen-Platzierung", "Case Stud"]
 PLATZHALTER = ["TODO", "TBD", "Lorem ipsum", "XXX", "PLATZHALTER"]
 # Erlaubte externe Ziele: nur nutzerinitiiert.
 ERLAUBT_EXTERN = ["calendly.com", "mailto:", "tel:"]
+# Einzige zulaessigen Geld- und Zeitraumangaben auf index.html.
+ERLAUBTE_ZAHLEN = ["3.000 €", "8.000 €", "6 Monate"]
 
 fehler = []
 
@@ -55,7 +62,7 @@ def pruefe_verbotene_inhalte():
 
 
 def pruefe_interne_links():
-    muster = re.compile(r'href\s*=\s*["\']([^"\'#][^"\']*)["\']')
+    muster = re.compile(r'(?:href|src)\s*=\s*["\']([^"\'#][^"\']*)["\']')
     for s in SEITEN:
         if not os.path.exists(os.path.join(WURZEL, s)):
             continue
@@ -64,7 +71,47 @@ def pruefe_interne_links():
                 continue
             pfad = os.path.join(WURZEL, ziel.split("#")[0].lstrip("/"))
             if not os.path.exists(pfad):
-                fehler.append(f"{s}: toter Link -> {ziel}")
+                fehler.append(f"{s}: toter Link/Ressource -> {ziel}")
+
+
+def pruefe_keine_skripte():
+    for s in SEITEN:
+        if not os.path.exists(os.path.join(WURZEL, s)):
+            continue
+        roh = lies(s)
+        if re.search(r"<\s*script", roh, re.I):
+            fehler.append(f"{s}: enthaelt <script>")
+        if re.search(r"<\s*iframe", roh, re.I):
+            fehler.append(f"{s}: enthaelt <iframe>")
+
+
+def pruefe_css():
+    for pfad in CSS_DATEIEN:
+        voll = os.path.join(WURZEL, pfad)
+        if not os.path.exists(voll):
+            fehler.append(f"{pfad}: Datei fehlt")
+            continue
+        with open(voll, encoding="utf-8") as f:
+            inhalt = f.read()
+        for treffer in re.findall(r'url\(\s*["\']?([^"\')]+)["\']?\s*\)', inhalt):
+            if treffer.startswith("//"):
+                fehler.append(f"{pfad}: protokolllose URL {treffer!r}")
+            elif treffer.startswith(("http://", "https://")):
+                fehler.append(f"{pfad}: fremder Host in url() {treffer!r}")
+        for treffer in re.findall(r'@import\s+["\']?([^"\';]+)', inhalt):
+            if treffer.startswith("//") or treffer.startswith(("http://", "https://")):
+                fehler.append(f"{pfad}: fremder Host in @import {treffer!r}")
+
+
+def pruefe_zahlen():
+    s = "index.html"
+    if not os.path.exists(os.path.join(WURZEL, s)):
+        return
+    text = text_von(lies(s))
+    muster = re.compile(r"\d[\d.,]*\s?€|\d+\s*Monate?\b")
+    for treffer in muster.findall(text):
+        if treffer not in ERLAUBTE_ZAHLEN:
+            fehler.append(f"{s}: unzulaessige Zahlenangabe {treffer!r}")
 
 
 def pruefe_kopfangaben():
@@ -99,6 +146,9 @@ def main():
     pruefe_keine_fremdanfragen()
     pruefe_verbotene_inhalte()
     pruefe_interne_links()
+    pruefe_keine_skripte()
+    pruefe_css()
+    pruefe_zahlen()
     pruefe_kopfangaben()
     pruefe_marke()
     pruefe_entfallene_dateien()
