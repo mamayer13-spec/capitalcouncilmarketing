@@ -131,7 +131,7 @@ def pruefe_marke():
     for s in SEITEN:
         if not os.path.exists(os.path.join(WURZEL, s)):
             continue
-        if "Growth Lab Blueprint" not in lies(s):
+        if "Die Kundenmaschine" not in lies(s):
             fehler.append(f"{s}: Markenname fehlt")
 
 

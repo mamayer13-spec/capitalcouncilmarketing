@@ -1,4 +1,4 @@
-# Growth Lab Blueprint
+# Die Kundenmaschine
 
 Website der 28 Capital Council LLC für das LinkedIn-Coaching-Angebot.
 Statisches HTML ohne Build-Schritt.

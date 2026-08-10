@@ -1,4 +1,4 @@
-# Designsystem — Growth Lab Blueprint
+# Designsystem — Die Kundenmaschine
 
 Dieses Dokument beschreibt das Designsystem, wie es tatsächlich in `styles.css`
 gebaut ist. Es beschreibt keine Wunschliste — jede hier genannte Regel hat eine
