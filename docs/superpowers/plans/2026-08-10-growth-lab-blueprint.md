@@ -44,8 +44,8 @@ Diese Bedingungen gelten für **jede** Aufgabe.
 
 ## Offene Eingaben
 
-Fünf Angaben fehlen. Aufgaben, die davon abhängen, sind unten mit **GESPERRT** markiert
-und dürfen nicht mit erfundenen Inhalten umgesetzt werden.
+Stand nach der Rückmeldung des Auftraggebers vom 10.8.2026. Keine Aufgabe ist mehr
+gesperrt; zwei Angaben fehlen weiterhin und werden ausgelassen statt erfunden.
 
 | # | Angabe | Stand |
 |---|---|---|
@@ -1100,10 +1100,10 @@ bestätigt und werden übernommen.
 
 ```bash
 cd ~/Downloads/capitalcouncilmarketing
-grep -n 'Eingabe 1' index.html
+grep -n '<!--' index.html
 ```
 
-Erwartet: keine Ausgabe.
+Erwartet: keine Ausgabe. Jeder verbliebene Kommentar bedeutet eine unbefüllte Stelle.
 
 - [ ] **Schritt 4: Prüfskript und Committen**
 
@@ -1347,13 +1347,14 @@ Erwartet: `0`.
 
 ```bash
 cd ~/Downloads/capitalcouncilmarketing
-grep -n 'Eingabe 4\|<!-- Antwort' index.html
+grep -n '<!--\|Telefon' index.html
 python3 tools/check.py
 git add index.html styles.css
 git commit -m "FAQ und Kontaktabschnitt aufbauen"
 ```
 
-Der `grep` muss ohne Ausgabe bleiben.
+Der `grep` muss ohne Ausgabe bleiben — es gibt weder offene Kommentare noch eine leere
+Telefonzeile.
 
 ---
 
@@ -1412,8 +1413,8 @@ Der Leistungsgegenstand muss von Agenturleistungen auf Coaching umgestellt werde
 |---|---|---|
 | § 1 | Beschränkung auf Unternehmer | **unverändert übernehmen** |
 | § 2 | Leistungen: SEO, Ads, Social Media | Coaching: Gruppenprogramm und Einzelbetreuung, Umfang wie im Preisabschnitt |
-| § 3 | Preise, Werbebudget-Abgrenzung | Preise 3.000 € / 8.000 € netto, Zahlungsweise aus Eingabe 1; Werbebudget-Absatz entfällt |
-| § 4 | Laufzeiten für Retainer | Laufzeit und Kündigungsfrist beider Pakete aus Eingabe 1 |
+| § 3 | Preise, Werbebudget-Abgrenzung | Preise 3.000 € / 8.000 € netto, Zahlung per Überweisung; Werbebudget-Absatz entfällt ersatzlos |
+| § 4 | Laufzeiten für Retainer | Beide Pakete: 6 Monate Laufzeit, ordentliche Kündigung während der Laufzeit ausgeschlossen, außerordentliche Kündigung aus wichtigem Grund bleibt unberührt; nach Ablauf endet der Vertrag ohne Kündigung |
 | § 5 | Zugänge zu Werbekonten | Mitwirkung: Teilnahme an Terminen, eigenständige Umsetzung |
 | § 6 | keine Ergebnisgarantien | **unverändert übernehmen**, Formulierung ist gut |
 
