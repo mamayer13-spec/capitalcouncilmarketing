@@ -268,3 +268,42 @@ a { color: var(--primaer); }
   color: var(--text-leise);
   margin-top: 32px;
 }
+
+.faq { margin-top: 40px; border-top: 1px solid var(--rand); }
+
+.faq__eintrag { border-bottom: 1px solid var(--rand); padding: 20px 0; }
+
+.faq__eintrag summary {
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.05rem;
+  list-style: none;
+}
+
+.faq__eintrag summary::-webkit-details-marker { display: none; }
+.faq__eintrag summary::after { content: " +"; color: var(--primaer); }
+.faq__eintrag[open] summary::after { content: " −"; }
+.faq__eintrag p { margin: 14px 0 0; color: var(--text-leise); }
+
+.kontakt__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.kontakt__daten {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 20px;
+  margin-top: 32px;
+  font-size: 15px;
+}
+
+.kontakt__daten dt { color: var(--text-leise); }
+.kontakt__daten dd { margin: 0; }
+.kontakt__bild { aspect-ratio: 4 / 3; }
+
+@media (max-width: 900px) {
+  .kontakt__inner { grid-template-columns: 1fr; }
+}
