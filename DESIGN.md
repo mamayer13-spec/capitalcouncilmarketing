@@ -1,168 +1,97 @@
----
-name: Kinetic Noir
-colors:
-  surface: '#1f0f0d'
-  surface-dim: '#1f0f0d'
-  surface-bright: '#493431'
-  surface-container-lowest: '#190a08'
-  surface-container-low: '#291715'
-  surface-container: '#2d1b18'
-  surface-container-high: '#392522'
-  surface-container-highest: '#44302d'
-  on-surface: '#fcdbd6'
-  on-surface-variant: '#e7bdb7'
-  inverse-surface: '#fcdbd6'
-  inverse-on-surface: '#402b29'
-  outline: '#ad8883'
-  outline-variant: '#5d3f3b'
-  surface-tint: '#ffb4aa'
-  primary: '#ffb4aa'
-  on-primary: '#690003'
-  primary-container: '#ff5545'
-  on-primary-container: '#5c0002'
-  inverse-primary: '#c0000a'
-  secondary: '#ffb4aa'
-  on-secondary: '#680203'
-  secondary-container: '#891d16'
-  on-secondary-container: '#ff9a8c'
-  tertiary: '#68d3fc'
-  on-tertiary: '#003545'
-  tertiary-container: '#1d9cc3'
-  on-tertiary-container: '#002e3c'
-  error: '#ffb4ab'
-  on-error: '#690005'
-  error-container: '#93000a'
-  on-error-container: '#ffdad6'
-  primary-fixed: '#ffdad5'
-  primary-fixed-dim: '#ffb4aa'
-  on-primary-fixed: '#410001'
-  on-primary-fixed-variant: '#930005'
-  secondary-fixed: '#ffdad5'
-  secondary-fixed-dim: '#ffb4aa'
-  on-secondary-fixed: '#410001'
-  on-secondary-fixed-variant: '#891d16'
-  tertiary-fixed: '#bbe9ff'
-  tertiary-fixed-dim: '#68d3fc'
-  on-tertiary-fixed: '#001f29'
-  on-tertiary-fixed-variant: '#004d63'
-  background: '#1f0f0d'
-  on-background: '#fcdbd6'
-  surface-variant: '#44302d'
-typography:
-  display-lg:
-    fontFamily: Space Grotesk
-    fontSize: 72px
-    fontWeight: '700'
-    lineHeight: '1.1'
-    letterSpacing: -0.04em
-  display-lg-mobile:
-    fontFamily: Space Grotesk
-    fontSize: 40px
-    fontWeight: '700'
-    lineHeight: '1.2'
-    letterSpacing: -0.02em
-  headline-lg:
-    fontFamily: Space Grotesk
-    fontSize: 48px
-    fontWeight: '600'
-    lineHeight: '1.2'
-  headline-md:
-    fontFamily: Space Grotesk
-    fontSize: 32px
-    fontWeight: '600'
-    lineHeight: '1.3'
-  body-lg:
-    fontFamily: Inter
-    fontSize: 18px
-    fontWeight: '400'
-    lineHeight: '1.6'
-  body-md:
-    fontFamily: Inter
-    fontSize: 16px
-    fontWeight: '400'
-    lineHeight: '1.6'
-  label-caps:
-    fontFamily: Inter
-    fontSize: 12px
-    fontWeight: '600'
-    lineHeight: '1.2'
-    letterSpacing: 0.1em
-rounded:
-  sm: 0.25rem
-  DEFAULT: 0.5rem
-  md: 0.75rem
-  lg: 1rem
-  xl: 1.5rem
-  full: 9999px
-spacing:
-  container-max: 1280px
-  gutter: 24px
-  margin-mobile: 20px
-  section-gap: 120px
-  stack-sm: 8px
-  stack-md: 16px
-  stack-lg: 32px
----
+# Designsystem — Growth Lab Blueprint
 
-## Brand & Style
+Dieses Dokument beschreibt das Designsystem, wie es tatsächlich in `styles.css`
+gebaut ist. Es beschreibt keine Wunschliste — jede hier genannte Regel hat eine
+Entsprechung im Stylesheet.
 
-This design system embodies a high-octane, tech-forward marketing aesthetic. It leverages a "Dark Tech" style that prioritizes deep immersion, high contrast, and cinematic energy. The mood is authoritative yet innovative, designed to evoke feelings of precision, speed, and premium quality.
+Anlass des Systems: Die Website wird einer Bank zur Prüfung vorgelegt, damit
+das Geschäftskonto der 28 Capital Council LLC nicht wiederholt gesperrt wird.
+Entsprechend ruhig, seriös und zurückhaltend ist die Gestaltung angelegt —
+kein „high-octane"-Look, keine Coaching-Ästhetik.
 
-The visual narrative is built on the tension between an expansive, near-black void and surgical strikes of vibrant red-orange light. It utilizes spacious layouts, generous negative space, and "glow-morphism" to create depth without relying on traditional skeuomorphism. The target audience expects a cutting-edge partner that balances raw power with sophisticated execution.
+## Farben
 
-## Colors
+Sieben Tokens, definiert in `:root` in `styles.css`:
 
-The palette is strictly controlled to maintain a high-end, focused atmosphere. The background is a deep, singular black to maximize the luminance of the accent colors. 
+| Token | Wert | Rolle |
+|---|---|---|
+| `--bg` | `#F7F9FC` | Seitenhintergrund |
+| `--flaeche` | `#FFFFFF` | Flächen: Karten, Knöpfe, Kopfzeile |
+| `--rand` | `#E3E8EF` | Ränder von Karten, Knöpfen, Kopf- und Fußzeile |
+| `--text` | `#0A2540` | Fließtext, Überschriften, Marke |
+| `--text-leise` | `#5B6B7F` | Nebentext: Hero-Lead, Navigation, Fußzeile, Listen |
+| `--primaer` | `#1B5FCC` | Primärfarbe: Labels, Links, Primärknopf, Bild-Überlagerung |
+| `--akzent` | `#E8F0FE` | Hell-Akzent: `.abschnitt--akzent`, Verlauf-Rückfallebene für Bilder |
 
-- **Primary:** A high-vibrancy red-orange used for calls to action, progress indicators, and critical highlights.
-- **Accents:** Gradients between the primary shades are used to create "light leaks" and glows, simulating a high-tech hardware interface.
-- **Neutrals:** Dark grey surfaces create structural hierarchy, while light grey text ensures readability without the harshness of pure white on black.
+Wichtig: LinkedIns exaktes Markenblau `#0A66C2` wird bewusst **nicht** verwendet.
+`--primaer` (`#1B5FCC`) liegt nah genug an dieser Farbfamilie, um die gewünschte
+Assoziation mit einer professionellen, plattformnahen Beratung auszulösen —
+unterscheidet sich aber deutlich genug, dass keine offizielle Partnerschaft mit
+LinkedIn suggeriert wird.
 
-## Typography
+## Schriften
 
-Typography is a primary structural element. **Space Grotesk** provides a technical, geometric edge for headlines, utilizing tight letter-spacing and massive scales for a "display" feel. **Inter** handles all functional and body copy, chosen for its extreme legibility and neutral, systematic character.
+- **Source Serif 4** für Überschriften (`h1`, `h2`, `h3`, `.marke`, `.fuss__marke`).
+- **Inter** für Fließtext (`body`).
 
-Large display type should often use a slight "inner glow" or white-to-light-grey gradient to feel integrated into the dark environment. Labels and overlines should always be uppercase with increased tracking to denote technical metadata.
+Beide sind variable Schriften und lokal eingebunden über `assets/fonts/fonts.css`
+(per `@import` in `styles.css`), mit Gewichtsspannen statt einzelner Schnitte:
+Inter deckt `font-weight: 100 900` ab, Source Serif 4 `font-weight: 200 900`.
+Keine externen Font-Anfragen — passend zur Vorgabe, dass beim Seitenaufruf
+keine Fremdanfragen entstehen.
 
-## Layout & Spacing
+Begründung für die Serifenschrift bei Überschriften: Serifen signalisieren
+Beständigkeit — aus demselben Grund setzen Beratungen, Kanzleien und
+Wirtschaftsmedien auf sie. Zugleich grenzt das von der Coaching-Branche ab,
+die fast durchweg geometrische Sans-Schriften verwendet.
 
-The layout follows a 12-column fluid grid system with significant vertical "breathing room" between sections (120px+). Content should feel uncrowded, mimicking the premium feel of a high-end editorial or luxury tech brand.
+## Layoutwerte
 
-- **Desktop:** 12 columns, 24px gutters, max-width of 1280px.
-- **Tablet:** 8 columns, 24px gutters, fluid width.
-- **Mobile:** 4 columns, 20px gutters, fluid width.
+Als CSS-Variablen in `:root`:
 
-Elements within cards use a tight 8px-based spacing system to maintain a "dense information" feel inside an otherwise "spacious" layout.
+- `--breite: 1200px` — maximale Breite von `.container`
+- `--abstand-abschnitt: 140px` — vertikales Padding von `.abschnitt` (auf
+  Viewports bis 720px auf `80px` reduziert)
+- `--radius: 12px` — Eckenradius von `.karte` und `.bild`
+- `--radius-pill: 999px` — Eckenradius von `.knopf` (Pill-Form)
 
-## Elevation & Depth
+## Bildregeln
 
-This system avoids traditional drop shadows in favor of **Tonal Layering** and **Luminescence**. 
+`.bild` sorgt für eine einheitliche Blaufärbung, damit Stockmaterial
+unterschiedlicher Herkunft wie eine zusammenhängende Bildserie wirkt, statt wie
+zusammengewürfelte Fotos verschiedener Quellen. Umgesetzt über ein `::after`-
+Overlay in `--primaer` mit `opacity: 0.16` und `mix-blend-mode: color`, dazu
+ein `filter: saturate(0.7) contrast(1.02)` auf dem `img`-Element selbst.
 
-1.  **Base Layer:** The `#0a0a0a` background.
-2.  **Surface Layer:** Dark grey cards (`#1a1a1a`) with a subtle `1px` border in `#2a2a2a`.
-3.  **Accent Depth:** High-priority cards or buttons feature a "Red Glow"—a soft, diffused outer shadow using the primary color at 15-20% opacity.
-4.  **Glassmorphism:** Navigation bars and floating controls use a 20px backdrop blur with a 10% white overlay to feel like precision-machined glass.
+Rückfallebene: Solange ein Foto fehlt, zeigt `.bild` einen Verlauf in den
+Markenfarben (`linear-gradient(135deg, var(--akzent) 0%, #C9DBF7 55%,
+var(--primaer) 100%)`) statt eines kaputten Bildsymbols.
 
-## Shapes
+Ausschlusskriterien für Bildmotive:
+- kein Händeschütteln
+- keine Konferenzräume mit Zeigefinger auf Diagramme
+- keine Erfolgsposen
+- keine fremden Markenlogos
+- keine erkennbaren LinkedIn-Oberflächen
 
-The shape language is "Sophisticated Geometric." We use a consistent `0.5rem` (8px) base radius for standard inputs and small UI elements, but significantly larger radii for structural containers.
+## Bausteine
 
-- **Standard Cards:** `1.5rem` (24px) to create a friendly but professional "modern tech" silhouette.
-- **Buttons:** Fully pill-shaped (`999px`) to distinguish interactive elements from informational cards.
-- **Icons:** Lean, 2px stroke-width icons with slightly rounded caps to match the typography.
+Aus `styles.css`:
 
-## Components
+- `.container` — zentrierter Layoutrahmen, `max-width: var(--breite)`, seitliches Padding 24px
+- `.label` — Versal-Label: 12px, fett, `letter-spacing: 0.14em`, `text-transform: uppercase`, in `--primaer`
+- `.knopf` — Grundknopf: Pill-Form, weiße Fläche, Rand in `--rand`, färbt den Rand bei Hover in `--primaer`
+- `.knopf-primaer` — gefüllte Variante von `.knopf`: Hintergrund und Rand in `--primaer`, weiße Schrift
+- `.karte` — weiße Fläche mit Rand und `--radius`, 32px Innenabstand (24px unter 720px)
+- `.abschnitt` — Abschnitts-Wrapper mit vertikalem Padding `var(--abstand-abschnitt)`
+- `.abschnitt--akzent` — Abschnitt mit Hintergrund `--akzent`
+- `.bild` — einheitliche Bildbehandlung, siehe oben
+- `.raster-2` — zweispaltiges Grid (`1fr 1fr`, 24px Abstand), fällt unter 900px auf eine Spalte
+- `.karte--leise` — Modifikator zu `.karte`: transparenter Hintergrund statt Weiß
+- `.liste` — Aufzählung ohne Standard-Margin, Text in `--text-leise`, 10px Abstand zwischen Einträgen
 
-### Buttons
-- **Primary:** Pill-shaped, Primary Gradient background, white text. Features a 10px blurred red glow on hover.
-- **Secondary:** Pill-shaped, ghost style with a 1px border (`#2a2a2a`), white text. Background shifts to a subtle dark grey on hover.
-
-### Cards
-- **Feature Cards:** `#1a1a1a` background, 24px padding, `rounded-2xl`. Borders are `#2a2a2a`. 
-- **Stats Cards:** Minimalist, featuring large Space Grotesk numbers and the primary color for the metric value.
-
-### Input Fields
-- Dark backgrounds (`#050505`), 1px subtle borders. On focus, the border turns to the primary red and a soft red outer glow is applied.
-
-### Chips & Tags
-- Small, uppercase text within a `#2a2a2a` container. For "Active" or "Live" status, a small 8px pulsing red dot is included to the left of the text.
+Kopf- und Fußzeile (`.kopf`, `.kopf__inner`, `.marke`, `.nav`, `.fuss`,
+`.fuss__marke`, `.fuss__links`) sowie die Hero-Klassen (`.hero`, `.hero__inner`,
+`.hero__lead`, `.hero__hinweis`, `.hero__bild`) und `.rechtstext` für die
+Rechtsseiten runden das System ab, folgen aber denselben Tokens und Bausteinen
+oben.
