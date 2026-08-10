@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schrift-Probe — Variable Fonts</title>
+  <link rel="stylesheet" href="fonts.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f5f5;
+      padding: 40px;
+      line-height: 1.6;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 40px;
+      color: #333;
+    }
+    .section {
+      background: white;
+      padding: 30px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .section h2 {
+      font-family: 'Source Serif 4', serif;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #0A2540;
+    }
+    .sample {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #fafafa;
+      border-left: 4px solid #1B5FCC;
+    }
+    .sample-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .sample-text {
+      font-size: 18px;
+      color: #333;
+    }
+    .inter-weight-400 { font-family: 'Inter', sans-serif; font-weight: 400; }
+    .inter-weight-500 { font-family: 'Inter', sans-serif; font-weight: 500; }
+    .inter-weight-600 { font-family: 'Inter', sans-serif; font-weight: 600; }
+    .inter-weight-700 { font-family: 'Inter', sans-serif; font-weight: 700; }
+    .inter-weight-800 { font-family: 'Inter', sans-serif; font-weight: 800; }
+    .inter-weight-900 { font-family: 'Inter', sans-serif; font-weight: 900; }
+
+    .sourceserif-weight-400 { font-family: 'Source Serif 4', serif; font-weight: 400; }
+    .sourceserif-weight-600 { font-family: 'Source Serif 4', serif; font-weight: 600; }
+    .sourceserif-weight-700 { font-family: 'Source Serif 4', serif; font-weight: 700; }
+    .sourceserif-weight-800 { font-family: 'Source Serif 4', serif; font-weight: 800; }
+    .sourceserif-weight-900 { font-family: 'Source Serif 4', serif; font-weight: 900; }
+  </style>
+</head>
+<body>
+  <h1>Probe: Variable Schriften mit Gewichtsinterpolation</h1>
+
+  <div class="section">
+    <h2>Inter (Variable Font: wght 100–900)</h2>
+    <p style="margin-bottom: 20px; color: #666; font-size: 14px;">
+      Diese Familie wird mit einer Spanne deklariert. Der Browser interpoliert alle Gewichte aus einer Datei.
+    </p>
+
+    <div class="sample">
+      <div class="sample-label">Inter — Weight 400 (Regular)</div>
+      <div class="sample-text inter-weight-400">
+        Schnelle braune Füchse springen über faule Hunde. The quick brown fox jumps over the lazy dog.
+      </div>
+    </div>
+
+    <div class="sample">
+      <div class="sample-label">Inter — Weight 500 (Medium)</div>
+      <div class="sample-text inter-weight-500">
+        Schnelle braune Füchse springen über faule Hunde. The quick brown fox jumps over the lazy dog.
+      </div>
+    </div>
+
+    <div class="sample">
+      <div class="sample-label">Inter — Weight 600 (Semibold)</div>
+      <div class="sample-text inter-weight-600">
+        Schnelle braune Füchse springen über faule Hunde. The quick brown fox jumps over the lazy dog.
+      </div>
+    </div>
+
+    <div class="sample">
+      <div class="sample-label">Inter — Weight 700 (Bold)</div>
+      <div class="sample-text inter-weight-700">
+        Schnelle braune Füchse springen über faule Hunde. The quick brown fox jumps over the lazy dog.
+      </div>
+    </div>
+
+    <div class="sample">
+      <div class="sample-label">Inter — Weight 800 (Extra Bold)</div>
+      <div class="sample-text inter-weight-800">
+        Schnelle braune Füchse springen über faule Hunde. The quick brown fox jumps over the lazy dog.
+      </div>
+    </div>
+
+    <div class="sample">
+      <div class="sample-label">Inter — Weight 900 (Black)</div>
+      <div class="sample-text inter-weight-900">
+        Schnelle braune Füchse springen über faule Hunde. The quick brown fox jumps over the lazy dog.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Source Serif 4 (Variable Font: wght 200–900)</h2>
+    <p style="margin-bottom: 20px; color: #666; font-size: 14px;">
+      Diese Familie wird mit einer Spanne ab 200 deklariert. Der Browser interpoliert alle Gewichte aus einer Datei.
+    </p>
+
+    <div class="sample">
+      <div class="sample-label">Source Serif 4 — Weight 400 (Regular)</div>
+      <div class="sample-text sourceserif-weight-400">
+        Schnelle braune Füchse springen über faule Hunde. The quick brown fox jumps over the lazy dog.
+      </div>
+    </div>
+
+    <div class="sample">
+      <div class="sample-label">Source Serif 4 — Weight 600 (Semibold)</div>
+      <div class="sample-text sourceserif-weight-600">
+        Schnelle braune Füchse springen über faule Hunde. The quick brown fox jumps over the lazy dog.
+      </div>
+    </div>
+
+    <div class="sample">
+      <div class="sample-label">Source Serif 4 — Weight 700 (Bold)</div>
+      <div class="sample-text sourceserif-weight-700">
+        Schnelle braune Füchse springen über faule Hunde. The quick brown fox jumps over the lazy dog.
+      </div>
+    </div>
+
+    <div class="sample">
+      <div class="sample-label">Source Serif 4 — Weight 800 (Extra Bold)</div>
+      <div class="sample-text sourceserif-weight-800">
+        Schnelle braune Füchse springen über faule Hunde. The quick brown fox jumps over the lazy dog.
+      </div>
+    </div>
+
+    <div class="sample">
+      <div class="sample-label">Source Serif 4 — Weight 900 (Black)</div>
+      <div class="sample-text sourceserif-weight-900">
+        Schnelle braune Füchse springen über faule Hunde. The quick brown fox jumps over the lazy dog.
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="background: #E8F0FE; border-left: 4px solid #1B5FCC;">
+    <p style="font-size: 13px; color: #0A2540;">
+      <strong>Hinweis:</strong> Diese Seite ist ein Werkzeug zur Prüfung der Schriftimplementierung. Sie wird im Repo mitcommittet, aber nicht verlinkt oder als Teil der Website ausgeliefert.
+    </p>
+  </div>
+</body>
+</html>
