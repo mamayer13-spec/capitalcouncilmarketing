@@ -125,3 +125,52 @@ a { color: var(--primaer); }
   body { font-size: 16px; }
   .karte { padding: 24px; }
 }
+
+.kopf {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+  background: rgba(247, 249, 252, 0.85);
+  border-bottom: 1px solid var(--rand);
+}
+
+.kopf__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: 72px;
+}
+
+.marke {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav { display: flex; align-items: center; gap: 28px; }
+.nav a { color: var(--text-leise); text-decoration: none; font-size: 15px; }
+.nav a:hover { color: var(--text); }
+.nav .knopf { color: #fff; }
+
+.fuss {
+  border-top: 1px solid var(--rand);
+  padding: 56px 0;
+  color: var(--text-leise);
+  font-size: 15px;
+}
+
+.fuss__marke {
+  font-family: "Source Serif 4", Georgia, serif;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.fuss__links { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 16px; }
+
+@media (max-width: 720px) {
+  .nav a:not(.knopf) { display: none; }
+}
