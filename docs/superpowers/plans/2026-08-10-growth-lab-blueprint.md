@@ -391,6 +391,9 @@ a { color: var(--primaer); }
   position: relative;
   overflow: hidden;
   border-radius: var(--radius);
+  /* Rückfallebene: Solange ein Foto fehlt, zeigt die Fläche einen ruhigen
+     Verlauf in den Markenfarben statt eines kaputten Bildsymbols. */
+  background: linear-gradient(135deg, var(--akzent) 0%, #C9DBF7 55%, var(--primaer) 100%);
 }
 
 .bild img {
@@ -615,14 +618,21 @@ git commit -m "Seitengerüst mit Kopf und Fuß anlegen, alte Unterseiten entfern
 
 ---
 
-### Aufgabe 5: Bildmaterial beschaffen
+### Aufgabe 5: Bildmaterial beschaffen · **ÜBERNIMMT DER AUFTRAGGEBER**
+
+Diese Aufgabe wird **nicht an einen Subagenten vergeben.** Ein Subagent kann nicht
+beurteilen, ob ein Motiv nach Katalogware aussieht. Der Auftraggeber wählt die Bilder
+selbst aus und legt sie ab; alle anderen Aufgaben laufen unabhängig davon weiter.
+
+Fehlt ein Foto, zeigt die Fläche den Verlauf aus der `.bild`-Rückfallebene (Aufgabe 3).
+Die Seite bleibt dadurch jederzeit vollständig und vorzeigbar.
 
 **Dateien:**
 - Anlegen: `assets/img/hero.jpg`, `assets/img/arbeit.jpg`, `assets/img/gespraech.jpg`
 
 **Schnittstellen:**
 - Erzeugt: drei Bilddateien mit genau diesen Namen. Aufgabe 6 bindet `hero.jpg` ein,
-  Aufgabe 7 `arbeit.jpg`, Aufgabe 9 `gespraech.jpg`.
+  Aufgabe 7 `arbeit.jpg`, Aufgabe 10 `gespraech.jpg`.
 - Die einheitliche Blaufärbung übernimmt die Klasse `.bild` aus Aufgabe 3. Die Dateien
   selbst werden **nicht** bearbeitet.
 
