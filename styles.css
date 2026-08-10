@@ -203,3 +203,8 @@ a { color: var(--primaer); }
 @media (max-width: 900px) {
   .hero__inner, .raster-2 { grid-template-columns: 1fr; }
 }
+
+.rechtstext { padding: 64px 0; max-width: 80ch; }
+.rechtstext h1 { font-size: 2.4rem; }
+.rechtstext h2 { font-size: 1.5rem; margin-top: 2em; }
+.rechtstext p, .rechtstext li { color: var(--text-leise); }
