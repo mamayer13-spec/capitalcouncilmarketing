@@ -137,9 +137,13 @@ strong { font-weight: 600; color: var(--text); }
 /* Dunkler Kontrapunkt. Bricht die durchgehend helle Fläche auf und gibt
    der Seite Rhythmus — bewusst genau einmal eingesetzt. */
 .abschnitt--dunkel {
+  /* Die Bürofassade liegt unter den Verläufen. Sie gibt dem dunklen Band
+     Textur, ohne mit dem Text zu konkurrieren — deshalb stark abgedunkelt. */
   background:
-    radial-gradient(52rem 30rem at 82% 0%, rgba(27, 95, 204, 0.32), transparent 66%),
-    linear-gradient(180deg, #0C2A4A, var(--text) 62%, #081D34);
+    radial-gradient(52rem 30rem at 82% 0%, rgba(27, 95, 204, 0.34), transparent 66%),
+    linear-gradient(180deg, rgba(12, 42, 74, 0.94), rgba(10, 37, 64, 0.9) 62%, rgba(8, 29, 52, 0.96)),
+    url("./assets/img/ausgangslage.jpg") center / cover no-repeat,
+    var(--text);
   color: #C7D5E6;
   overflow: hidden;
 }
