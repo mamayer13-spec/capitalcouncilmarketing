@@ -1129,3 +1129,7 @@ body::before { animation: treiben 26s ease-in-out infinite alternate; }
     padding: 22px;
   }
 }
+
+.fuss__kontakt { margin: 10px 0 0; }
+.fuss__kontakt a { color: var(--text-leise); text-decoration: none; }
+.fuss__kontakt a:hover { color: var(--primaer); }
