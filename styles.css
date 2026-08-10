@@ -134,8 +134,38 @@ strong { font-weight: 600; color: var(--text); }
   border-block: 1px solid var(--rand-zart);
 }
 
+/* Dunkler Kontrapunkt. Bricht die durchgehend helle Fläche auf und gibt
+   der Seite Rhythmus — bewusst genau einmal eingesetzt. */
+.abschnitt--dunkel {
+  background:
+    radial-gradient(52rem 30rem at 82% 0%, rgba(27, 95, 204, 0.32), transparent 66%),
+    linear-gradient(180deg, #0C2A4A, var(--text) 62%, #081D34);
+  color: #C7D5E6;
+  overflow: hidden;
+}
+
+.abschnitt--dunkel h2 { color: #FFFFFF; }
+.abschnitt--dunkel p { color: #B3C4D9; }
+.abschnitt--dunkel .label { color: #7FAEF5; }
+.abschnitt--dunkel .label::before { background: #7FAEF5; }
+
+/* Feines Punktraster als Textur — nur im dunklen Abschnitt sichtbar. */
+.abschnitt--dunkel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(60% 60% at 50% 40%, #000, transparent 78%);
+  -webkit-mask-image: radial-gradient(60% 60% at 50% 40%, #000, transparent 78%);
+  opacity: 0.6;
+}
+
 .abschnitt--akzent + .abschnitt::before,
-.abschnitt--akzent::before { display: none; }
+.abschnitt--akzent::before,
+.abschnitt--dunkel + .abschnitt::before,
+.abschnitt--dunkel::before { display: none; }
 
 /* Versal-Label mit vorangestellter Linie — die Wegmarke der Seite. */
 .label {
@@ -306,6 +336,9 @@ strong { font-weight: 600; color: var(--text); }
 }
 
 .marke {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
   font-family: "Source Serif 4", Georgia, serif;
   font-weight: 600;
   font-size: 1.14rem;
@@ -313,6 +346,79 @@ strong { font-weight: 600; color: var(--text); }
   color: var(--text);
   text-decoration: none;
   white-space: nowrap;
+}
+
+/* Bildmarke: zwei Ringe aus einzelnen Punkten, die gegenläufig atmen.
+   Die Punkte entstehen als box-shadow-Kopien eines 1,7px-Quadrats —
+   deshalb kein Bild und keine zusätzliche Anfrage. */
+.puls {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  flex: none;
+  color: var(--primaer);
+}
+
+.puls::before,
+.puls::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  transform-origin: center;
+}
+
+.puls::before {
+  width: 1.7px;
+  height: 1.7px;
+  margin: -0.85px 0 0 -0.85px;
+  box-shadow:
+    0.00px -11.00px 0 0 currentColor,
+    3.40px -10.46px 0 0 currentColor,
+    6.47px -8.90px 0 0 currentColor,
+    8.90px -6.47px 0 0 currentColor,
+    10.46px -3.40px 0 0 currentColor,
+    11.00px 0.00px 0 0 currentColor,
+    10.46px 3.40px 0 0 currentColor,
+    8.90px 6.47px 0 0 currentColor,
+    6.47px 8.90px 0 0 currentColor,
+    3.40px 10.46px 0 0 currentColor,
+    0.00px 11.00px 0 0 currentColor,
+    -3.40px 10.46px 0 0 currentColor,
+    -6.47px 8.90px 0 0 currentColor,
+    -8.90px 6.47px 0 0 currentColor,
+    -10.46px 3.40px 0 0 currentColor,
+    -11.00px 0.00px 0 0 currentColor,
+    -10.46px -3.40px 0 0 currentColor,
+    -8.90px -6.47px 0 0 currentColor,
+    -6.47px -8.90px 0 0 currentColor,
+    -3.40px -10.46px 0 0 currentColor;
+  animation: pulsen 3.4s var(--kurve) infinite;
+}
+
+.puls::after {
+  width: 1.4px;
+  height: 1.4px;
+  margin: -0.7px 0 0 -0.7px;
+  opacity: 0.55;
+  box-shadow:
+    0.00px -6.00px 0 0 currentColor,
+    3.53px -4.85px 0 0 currentColor,
+    5.71px -1.85px 0 0 currentColor,
+    5.71px 1.85px 0 0 currentColor,
+    3.53px 4.85px 0 0 currentColor,
+    0.00px 6.00px 0 0 currentColor,
+    -3.53px 4.85px 0 0 currentColor,
+    -5.71px 1.85px 0 0 currentColor,
+    -5.71px -1.85px 0 0 currentColor,
+    -3.53px -4.85px 0 0 currentColor;
+  animation: pulsen 3.4s var(--kurve) 0.55s infinite reverse;
+}
+
+@keyframes pulsen {
+  0%, 100% { transform: scale(0.86); opacity: 0.45; }
+  45%      { transform: scale(1.14); opacity: 1; }
 }
 
 .nav { display: flex; align-items: center; gap: 6px; }
@@ -357,38 +463,6 @@ strong { font-weight: 600; color: var(--text); }
   margin-top: 22px;
 }
 
-/* Faktenleiste unter dem Hero — Struktur statt leerer Fläche. */
-.hero__fakten {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px 40px;
-  max-width: 52rem;
-  margin: 64px 0 0;
-  padding: 28px 0 0;
-  border-top: 1px solid var(--rand);
-  list-style: none;
-}
-
-.hero__fakten li {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-sehr-leise);
-  padding: 8px 0;
-}
-
-.hero__fakten strong {
-  display: block;
-  font-family: "Source Serif 4", Georgia, serif;
-  font-size: 1.5rem;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  text-transform: none;
-  color: var(--text);
-  margin-top: 6px;
-}
-
 /* ---------- Methode ---------- */
 
 /* Fünf Phasen auf sechs Spalten: drei oben, zwei breitere unten.
@@ -420,19 +494,99 @@ strong { font-weight: 600; color: var(--text); }
 
 .methode__bild { aspect-ratio: 16 / 7; margin-top: 56px; }
 
-.begleitung {
-  border-top: 1px solid var(--rand);
-  padding-top: 36px;
-  margin-top: 56px;
+.begleitung { margin-top: 88px; }
+
+.begleitung__kopf { margin-bottom: 36px; }
+.begleitung__kopf h3 { font-size: clamp(1.5rem, 2.4vw, 2rem); margin: 0; }
+
+/* Werkzeuge als eigenständiges Raster mit gemeinsamen Trennlinien.
+   Kein Kasten je Eintrag — die Linien tragen die Ordnung. */
+.werkzeuge {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--rand);
+  border: 1px solid var(--rand);
+  border-radius: var(--radius-gross);
+  overflow: hidden;
+  box-shadow: var(--schatten-zart);
 }
 
-.begleitung .liste {
-  columns: 2;
-  column-gap: 48px;
-  margin-top: 20px;
+.werkzeug {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 32px 28px 28px;
+  background: var(--flaeche);
+  transition: background var(--zeit) var(--kurve);
 }
 
-.begleitung .liste li { break-inside: avoid; }
+.werkzeug:hover { background: #FCFDFF; }
+
+.werkzeug h4 {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 1.12rem;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  margin: 0;
+  color: var(--text);
+}
+
+.werkzeug p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-leise);
+  flex: 1;
+}
+
+/* Kleine Bildmarke je Werkzeug: konzentrische Ringe, die beim
+   Überfahren aufgehen. */
+.werkzeug__mark {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid var(--primaer);
+  position: relative;
+  opacity: 0.55;
+  transition: opacity var(--zeit) var(--kurve);
+}
+
+.werkzeug__mark::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: var(--primaer);
+  transform: scale(0.55);
+  transition: transform var(--zeit) var(--kurve);
+}
+
+.werkzeug:hover .werkzeug__mark { opacity: 1; }
+.werkzeug:hover .werkzeug__mark::after { transform: scale(1); }
+
+.werkzeug__tag {
+  align-self: flex-start;
+  margin-top: 6px;
+  padding: 4px 11px;
+  border-radius: var(--radius-pill);
+  background: var(--akzent);
+  color: var(--primaer);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.werkzeug--hervor { background: linear-gradient(180deg, #FBFCFF, var(--akzent)); }
+.werkzeug--hervor:hover { background: linear-gradient(180deg, #FFFFFF, var(--akzent)); }
+.werkzeug--hervor .werkzeug__mark { opacity: 1; }
+.werkzeug--hervor .werkzeug__mark::after { transform: scale(1); }
+.werkzeug--hervor .werkzeug__tag { background: var(--primaer); color: #fff; }
 
 /* ---------- Preis ---------- */
 
@@ -656,9 +810,6 @@ strong { font-weight: 600; color: var(--text); }
 .hero__lead       { animation: einblenden 0.8s var(--kurve) 0.16s both; }
 .hero .knopf      { animation: einblenden 0.8s var(--kurve) 0.24s both; }
 .hero__hinweis    { animation: einblenden 0.8s var(--kurve) 0.30s both; }
-.hero__fakten li  { animation: einblenden 0.8s var(--kurve) 0.38s both; }
-.hero__fakten li:nth-child(2) { animation-delay: 0.44s; }
-.hero__fakten li:nth-child(3) { animation-delay: 0.50s; }
 
 body::before { animation: treiben 26s ease-in-out infinite alternate; }
 
@@ -693,11 +844,14 @@ body::before { animation: treiben 26s ease-in-out infinite alternate; }
    Schmale Fenster
    ============================================================ */
 
+@media (max-width: 1080px) {
+  .werkzeuge { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 980px) {
   .ueber__inner,
   .kontakt__inner { grid-template-columns: 1fr; gap: 40px; }
   .ueber__bild { position: static; max-width: 22rem; }
-  .begleitung .liste { columns: 1; }
 }
 
 @media (max-width: 1000px) {
@@ -716,6 +870,5 @@ body::before { animation: treiben 26s ease-in-out infinite alternate; }
   .karte { padding: 26px; }
   .nav a:not(.knopf) { display: none; }
   .nav .knopf { margin-left: 0; }
-  .hero__fakten { gap: 0 28px; margin-top: 44px; }
   .abschnitt + .abschnitt::before { width: calc(100% - 40px); }
 }
