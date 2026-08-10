@@ -47,15 +47,23 @@ Diese Bedingungen gelten für **jede** Aufgabe.
 Fünf Angaben fehlen. Aufgaben, die davon abhängen, sind unten mit **GESPERRT** markiert
 und dürfen nicht mit erfundenen Inhalten umgesetzt werden.
 
-| # | Angabe | Sperrt |
+| # | Angabe | Stand |
 |---|---|---|
-| 1 | Laufzeit, Zahlungsweise, Kündigungsfrist beider Pakete | Aufgabe 6, 10 |
-| 2 | Claudios Werdegang | Aufgabe 8 |
-| 3 | Echtes Porträtfoto von Claudio | Aufgabe 8 |
-| 4 | Telefonnummer | Aufgabe 9, 10 |
-| 5 | Methodendetails: Phasen, Sitzungen, Materialien | Aufgabe 7 |
+| 1 | Konditionen | **geliefert** — 6 Monate Laufzeit, Zahlung per Überweisung, keine ordentliche Kündigung während der Laufzeit |
+| 2 | Claudios Werdegang | **geliefert** — siehe Aufgabe 9 |
+| 3 | Porträtfoto | **entfällt** — Abschnitt wird ohne Porträt gebaut |
+| 4 | Telefonnummer | **weiterhin offen** — steht in keinem Repo; Kontaktabschnitt wird ohne gebaut |
+| 5 | Methodendetails | **geliefert** — Videokurs, Live-Calls, WhatsApp-Support für beide Pakete, wöchentliche 1:1-Calls nur beim 8.000-€-Paket |
 
-Aufgaben 1–5 sind vollständig unblockiert und sollten zuerst laufen.
+**Bilder:** Der Auftraggeber liefert drei neutrale Stockfotos selbst (Aufgabe 5). Bis dahin
+greift die Rückfallebene aus `.bild`. Ausdrücklich **nicht** verwendet werden die
+vorhandenen Aufnahmen aus dem `capital-architecture`-Repo (Strand, Spiegel-Selfie,
+Infinity-Pool) — sie widersprechen dem seriösen Auftritt, den diese Seite für die
+Bankprüfung braucht.
+
+**Grenze bei allen Texten:** keine erfundenen Kennzahlen. Weder Lead-Zahlen noch
+Umsatzangaben, Kundenzahlen oder Zeitangaben zu Ergebnissen. Die Überzeugungskraft kommt
+aus der Genauigkeit der Beschreibung.
 
 ## Dateistruktur
 
@@ -827,14 +835,19 @@ git commit -m "Hero, Zielgruppe und Ausgangslage aufbauen"
 
 ---
 
-### Aufgabe 7: Abschnitt 4 — Die Methode · **GESPERRT bis Eingabe 5**
+### Aufgabe 7: Abschnitt 4 — Die Methode
 
 Dieser Abschnitt trägt die Glaubwürdigkeit der gesamten Seite, weil keine Erfolgsbelege
-existieren. Er darf **nicht** mit erfundenen Phasen gefüllt werden.
+existieren.
 
-**Voraussetzung:** Der Auftraggeber liefert Phasen, Sitzungsanzahl, Rhythmus und
-Materialien. Liegt das nicht vor, wird diese Aufgabe übersprungen und der Auftraggeber
-erneut danach gefragt.
+**Gelieferte Grundlage:** Laufzeit 6 Monate. Materialien: Videokurs, Live-Calls und
+WhatsApp-Support für beide Pakete; zusätzlich wöchentliche 1:1-Calls im 8.000-€-Paket.
+
+**Die fünf Phasen unten sind ein Entwurf**, abgeleitet aus diesen Materialien und der
+Laufzeit. Der Auftraggeber muss bestätigen, dass sie beschreiben, was tatsächlich
+geliefert wird — bevor die Seite einer Bank vorgelegt wird. Eine Leistungsbeschreibung,
+die nicht zur tatsächlichen Leistung passt, ist genau das Risiko, das dieses Projekt
+beseitigen soll.
 
 **Dateien:**
 - Ändern: `index.html`, `styles.css`
@@ -853,16 +866,75 @@ erneut danach gefragt.
     <h2>So arbeiten wir mit Ihnen.</h2>
     <p>Vom ersten Termin bis zu dem Punkt, an dem Sie das System allein bedienen.</p>
     <div class="phasen">
-      <!-- Pro gelieferter Phase ein Block. Nur ausfüllen, was der Auftraggeber
-           angegeben hat — keine Phase hinzuerfinden. -->
       <article class="karte phase">
         <span class="phase__nr">01</span>
-        <h3><!-- Name der Phase --></h3>
-        <p><!-- Was in dieser Phase passiert --></p>
+        <h3>Positionierung</h3>
+        <p>Bevor eine einzige Nachricht rausgeht, klären wir, für wen Sie was lösen. Die
+        meisten B2B-Dienstleister beschreiben, was sie tun — nicht, welches Problem sie
+        beseitigen. Genau daran scheitert die Ansprache später.</p>
         <ul class="liste">
-          <li><!-- Konkretes Ergebnis dieser Phase --></li>
+          <li>Zielkunde eingegrenzt: Branche, Größe, Rolle des Entscheiders</li>
+          <li>Angebot in einem Satz, den ein Fremder versteht</li>
+          <li>Abgrenzung: was Sie bewusst nicht anbieten</li>
         </ul>
       </article>
+      <article class="karte phase">
+        <span class="phase__nr">02</span>
+        <h3>Fundament</h3>
+        <p>Ihr Profil ist keine Visitenkarte, sondern die Seite, auf der ein Interessent
+        entscheidet, ob er antwortet. Wir bauen es entsprechend um und legen die Liste
+        an, mit der Sie arbeiten.</p>
+        <ul class="liste">
+          <li>Profil als Landeseite für Ihre Zielgruppe</li>
+          <li>Liste passender Unternehmen und Ansprechpartner</li>
+          <li>Vorlagen für die erste Kontaktaufnahme</li>
+        </ul>
+      </article>
+      <article class="karte phase">
+        <span class="phase__nr">03</span>
+        <h3>Sichtbarkeit</h3>
+        <p>Wer regelmäßig zu seinem Thema schreibt, muss weniger überzeugen. Wir legen
+        einen Rhythmus fest, den Sie neben dem Tagesgeschäft durchhalten — und Themen,
+        die Ihre Zielgruppe tatsächlich betreffen.</p>
+        <ul class="liste">
+          <li>Themenplan aus den Fragen Ihrer Kunden</li>
+          <li>Fester Veröffentlichungsrhythmus statt Schüben</li>
+          <li>Beiträge, die Gespräche auslösen statt Beifall</li>
+        </ul>
+      </article>
+      <article class="karte phase">
+        <span class="phase__nr">04</span>
+        <h3>Ansprache</h3>
+        <p>Der Teil, den die meisten falsch machen. Wir arbeiten an Gesprächseinstiegen,
+        die nicht nach Verkauf klingen, und an der Frage, wie Sie früh erkennen, ob
+        jemand überhaupt passt.</p>
+        <ul class="liste">
+          <li>Gesprächsleitfaden für die Erstansprache</li>
+          <li>Kriterien, nach denen Sie qualifizieren — und absagen</li>
+          <li>Nachfassen ohne Aufdringlichkeit</li>
+        </ul>
+      </article>
+      <article class="karte phase">
+        <span class="phase__nr">05</span>
+        <h3>Übergabe</h3>
+        <p>Am Ende sollen Sie uns nicht brauchen. Die letzten Wochen gehen darauf, das
+        Vorgehen so festzuhalten, dass Sie oder Ihre Mitarbeiter es ohne uns
+        weiterführen.</p>
+        <ul class="liste">
+          <li>Ihr Vorgehen schriftlich festgehalten</li>
+          <li>Wöchentlicher Ablauf, der ins Tagesgeschäft passt</li>
+          <li>Einarbeitung eines Mitarbeiters, falls gewünscht</li>
+        </ul>
+      </article>
+    </div>
+    <div class="begleitung">
+      <h3>Womit wir Sie begleiten</h3>
+      <ul class="liste">
+        <li><strong>Videokurs</strong> — die Inhalte zum Nacharbeiten, jederzeit abrufbar</li>
+        <li><strong>Live-Calls</strong> — gemeinsame Termine, in denen wir an Ihren Fällen arbeiten</li>
+        <li><strong>WhatsApp-Support</strong> — für Fragen zwischendurch, in beiden Paketen</li>
+        <li><strong>Wöchentliche Einzelgespräche</strong> — ausschließlich in der Einzelbetreuung</li>
+      </ul>
     </div>
     <div class="bild methode__bild">
       <img src="assets/img/arbeit.jpg" alt="Konzentriertes Arbeiten am Laptop" width="1600" height="900">
@@ -890,6 +962,12 @@ erneut danach gefragt.
 }
 
 .methode__bild { aspect-ratio: 16 / 9; margin-top: 48px; }
+
+.begleitung {
+  border-top: 1px solid var(--rand);
+  padding-top: 32px;
+  margin-top: 48px;
+}
 ```
 
 - [ ] **Schritt 3: Prüfen, dass keine leeren Kommentare übrig sind**
@@ -913,10 +991,17 @@ git commit -m "Methodenabschnitt mit den gelieferten Phasen aufbauen"
 
 ---
 
-### Aufgabe 8: Abschnitte 5 und 6 — Leistungsumfang und Preis · **GESPERRT bis Eingabe 1**
+### Aufgabe 8: Abschnitte 5 und 6 — Leistungsumfang und Preis
 
-**Voraussetzung:** Laufzeit, Zahlungsweise und Kündigungsfrist beider Pakete liegen vor.
-Die AGB-Werte taugen nicht als Ersatz — sie gelten für Agenturleistungen.
+**Konditionen (geliefert, für beide Pakete gleich):** 6 Monate Laufzeit, Zahlung per
+Überweisung, keine ordentliche Kündigung während der Laufzeit. Das Recht zur
+außerordentlichen Kündigung aus wichtigem Grund bleibt unberührt — diese Formulierung
+steht bereits in den bestehenden AGB und wird beibehalten.
+
+Nach Ablauf der sechs Monate endet der Vertrag, ohne dass es einer Kündigung bedarf.
+**Diese Annahme muss der Auftraggeber bestätigen**, bevor die Seite einer Bank vorgelegt
+wird — die Alternative wäre eine automatische Verlängerung, die anders formuliert werden
+müsste.
 
 **Dateien:**
 - Ändern: `index.html`, `styles.css`
@@ -943,12 +1028,13 @@ bestätigt und werden übernommen.
         <ul class="liste">
           <li>Begleitung in der Gruppe</li>
           <li>Videokurs mit allen Inhalten</li>
+          <li>Gemeinsame Live-Calls</li>
           <li>Laufender Support über WhatsApp</li>
         </ul>
         <dl class="kondition">
-          <dt>Laufzeit</dt><dd><!-- Eingabe 1 --></dd>
-          <dt>Zahlung</dt><dd><!-- Eingabe 1 --></dd>
-          <dt>Kündigung</dt><dd><!-- Eingabe 1 --></dd>
+          <dt>Laufzeit</dt><dd>6 Monate</dd>
+          <dt>Zahlung</dt><dd>per Überweisung</dd>
+          <dt>Kündigung</dt><dd>keine ordentliche Kündigung während der Laufzeit</dd>
         </dl>
         <a class="knopf" href="#kontakt">Erstgespräch vereinbaren</a>
       </div>
@@ -957,14 +1043,15 @@ bestätigt und werden übernommen.
         <p class="paket__preis">8.000 €</p>
         <p class="paket__hinweis">zzgl. Umsatzsteuer</p>
         <ul class="liste">
-          <li>Betreuung eins zu eins</li>
+          <li><strong>Wöchentliche Einzelgespräche</strong></li>
           <li>Alle Inhalte des Gruppenprogramms</li>
+          <li>Videokurs und gemeinsame Live-Calls</li>
           <li>Laufender Support über WhatsApp</li>
         </ul>
         <dl class="kondition">
-          <dt>Laufzeit</dt><dd><!-- Eingabe 1 --></dd>
-          <dt>Zahlung</dt><dd><!-- Eingabe 1 --></dd>
-          <dt>Kündigung</dt><dd><!-- Eingabe 1 --></dd>
+          <dt>Laufzeit</dt><dd>6 Monate</dd>
+          <dt>Zahlung</dt><dd>per Überweisung</dd>
+          <dt>Kündigung</dt><dd>keine ordentliche Kündigung während der Laufzeit</dd>
         </dl>
         <a class="knopf knopf-primaer" href="#kontakt">Erstgespräch vereinbaren</a>
       </div>
@@ -1029,43 +1116,56 @@ git commit -m "Leistungsumfang und Preise beider Pakete darstellen"
 
 ---
 
-### Aufgabe 9: Abschnitt 7 — Über uns · **GESPERRT bis Eingaben 2 und 3**
+### Aufgabe 9: Abschnitt 7 — Über uns
 
-**Voraussetzung:** Claudios Werdegang liegt vor **und** ein echtes Porträtfoto. Ein
-Stockfoto als Bild einer namentlich genannten Person wäre eine Falschdarstellung und ist
-ausgeschlossen. Liegt nur der Werdegang vor, wird der Abschnitt ohne Bild gebaut.
+**Ohne Porträtfoto.** Der Auftraggeber hat entschieden, den Abschnitt vorerst ohne Bild zu
+bauen. Die vorhandenen Aufnahmen aus dem `capital-architecture`-Repo (Strand, Spiegel-
+Selfie, Infinity-Pool) werden ausdrücklich **nicht** verwendet — sie widersprechen dem
+seriösen Auftritt, den diese Seite für die Bankprüfung braucht. Ein Stockfoto als Bild
+einer namentlich genannten Person ist ebenfalls ausgeschlossen. Ein echtes Porträt kann
+später jederzeit ergänzt werden.
+
+**Grundlage laut Auftraggeber:** Claudio Fuersatz hat eine Personal Brand im
+Krypto-Bereich aufgebaut und daraus eine LinkedIn-Strategie entwickelt, die nachhaltig
+und gut qualifizierte Anfragen bringt. Diese Aussagen stammen vom Auftraggeber und werden
+übernommen.
+
+**Grenze:** keine Kennzahlen. Keine Lead-Zahlen, Zeiträume, Umsatz- oder Kundenzahlen —
+nichts, was belegt werden müsste und nicht belegt ist.
 
 **Dateien:**
 - Ändern: `index.html`, `styles.css`
-- Anlegen: `assets/img/claudio.jpg` (vom Auftraggeber geliefert)
 
 **Schnittstellen:**
-- Verbraucht: `.abschnitt`, `.label`, `.bild` aus Aufgabe 3.
+- Verbraucht: `.abschnitt`, `.label` aus Aufgabe 3, `.liste` aus Aufgabe 6.
 - Erzeugt: Anker `#ueber-uns`.
 
-- [ ] **Schritt 1: Foto ablegen und verkleinern**
-
-```bash
-cd ~/Downloads/capitalcouncilmarketing
-sips -Z 1200 assets/img/claudio.jpg --out assets/img/claudio.jpg
-ls -lh assets/img/claudio.jpg
-```
-
-Erwartet: Datei vorhanden, unter 300 KB.
-
-- [ ] **Schritt 2: Abschnitt einsetzen**
+- [ ] **Schritt 1: Abschnitt einsetzen**
 
 ```html
 <section class="abschnitt" id="ueber-uns">
   <div class="container ueber__inner">
-    <div class="bild ueber__bild">
-      <img src="assets/img/claudio.jpg" alt="Claudio Fuersatz" width="800" height="1000">
-    </div>
     <div>
       <span class="label">Wer dahintersteht</span>
       <h2>Claudio Fuersatz</h2>
-      <!-- Werdegang aus Eingabe 2: Herkunft, bisherige Tätigkeit, Bezug zu LinkedIn.
-           Zwei bis drei Absätze, ausschließlich belegbare Angaben. -->
+      <p>Claudio hat sich seine Reichweite selbst aufgebaut — als Personal Brand im
+      Krypto-Bereich, in einem Umfeld, in dem Aufmerksamkeit billig und Vertrauen teuer
+      ist. Wer dort über Jahre ein Publikum hält, lernt schnell, was Menschen dazu bringt,
+      einem Fremden im Netz zuzuhören: nicht Lautstärke, sondern Verlässlichkeit.</p>
+      <p>Aus dieser Arbeit ist die Frage entstanden, die heute den Kern des Programms
+      bildet: Warum funktioniert derselbe Mechanismus im B2B-Geschäft so selten? Die
+      meisten Dienstleister behandeln LinkedIn wie ein Anzeigenblatt. Sie posten über
+      sich, verschicken Textbausteine an Hunderte Kontakte und wundern sich, dass die
+      wenigen Antworten von den falschen Leuten kommen.</p>
+      <p>Die Strategie, die Claudio daraus entwickelt hat, dreht das um. Sie setzt bei der
+      Frage an, für wen man überhaupt der richtige Anbieter ist — und richtet Profil,
+      Inhalte und Ansprache konsequent darauf aus. Das Ergebnis sind weniger Gespräche,
+      aber solche mit Menschen, die das Problem tatsächlich haben und es lösen wollen.
+      Kein Trick, der nächsten Monat nicht mehr geht, sondern ein Vorgehen, das sich
+      wiederholen lässt.</p>
+      <p>Genau das gibt er im Programm weiter: nicht als Vorlage zum Abschreiben, sondern
+      angepasst an Ihr Angebot und Ihren Markt. Deshalb arbeiten wir sechs Monate
+      miteinander und nicht sechs Stunden.</p>
       <p class="ueber__haltung">Keine Erfolgsversprechen, keine gemieteten Kulissen. Wir
       arbeiten mit Unternehmen, die ihren Vertrieb selbst verstehen wollen.</p>
     </div>
@@ -1073,48 +1173,43 @@ Erwartet: Datei vorhanden, unter 300 KB.
 </section>
 ```
 
-- [ ] **Schritt 3: Styles anhängen**
+- [ ] **Schritt 2: Styles anhängen**
 
 ```css
-.ueber__inner {
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  gap: 56px;
-  align-items: start;
-}
-
-.ueber__bild { aspect-ratio: 4 / 5; }
+.ueber__inner { max-width: 70ch; }
 
 .ueber__haltung {
   border-left: 3px solid var(--primaer);
   padding-left: 20px;
   color: var(--text-leise);
-}
-
-@media (max-width: 900px) {
-  .ueber__inner { grid-template-columns: 1fr; }
+  margin-top: 32px;
 }
 ```
 
-- [ ] **Schritt 4: Auf Platzhalter prüfen, Prüfskript, Committen**
+- [ ] **Schritt 3: Auf Kennzahlen prüfen, Prüfskript, Committen**
 
 ```bash
 cd ~/Downloads/capitalcouncilmarketing
-grep -n '<!-- Werdegang' index.html
+grep -nE '[0-9]+ ?(Leads|Kunden|Prozent|%|Monaten|Tagen|€)' index.html
 python3 tools/check.py
-git add index.html styles.css assets/img/claudio.jpg
-git commit -m "Über-uns-Abschnitt mit Werdegang und Porträt aufbauen"
+git add index.html styles.css
+git commit -m "Über-uns-Abschnitt mit Werdegang aufbauen"
 ```
 
-Der `grep` muss ohne Ausgabe bleiben.
+Der `grep` darf nur Treffer im Preisabschnitt liefern (3.000 €, 8.000 €, 6 Monate) —
+keinen einzigen im Über-uns-Abschnitt.
 
 ---
 
-### Aufgabe 10: Abschnitte 8 und 9 — FAQ und Kontakt · **GESPERRT bis Eingabe 4**
+### Aufgabe 10: Abschnitte 8 und 9 — FAQ und Kontakt
 
-**Voraussetzung:** Telefonnummer liegt vor. Ohne sie wird der Abschnitt mit E-Mail und
-Calendly gebaut und die Nummer später ergänzt — für die Bankprüfung ist sie ein Pluspunkt,
-aber kein Ausschlusskriterium.
+**Ohne Telefonnummer.** Sie ließ sich in keinem Repo finden — weder in
+`capital-architecture` noch in `capital-architecture-app`; das dortige Impressum nennt nur
+eine E-Mail-Adresse. Der Abschnitt wird daher mit E-Mail, Calendly und Anschrift gebaut.
+Die Zeile für die Telefonnummer entfällt vollständig, statt leer zu bleiben.
+
+**Für die Bankprüfung ist eine erreichbare Telefonnummer ein Pluspunkt** und sollte
+nachgetragen werden, sobald sie feststeht.
 
 **Dateien:**
 - Ändern: `index.html`, `styles.css`
@@ -1154,8 +1249,11 @@ wertvoller als Werbetext.
       </details>
       <details class="faq__eintrag">
         <summary>Kann ich kündigen?</summary>
-        <!-- Antwort aus Eingabe 1: Kündigungsfrist beider Pakete, wortgleich zu den
-             Angaben im Preisabschnitt und in den AGB. -->
+        <p>Beide Pakete laufen sechs Monate. Eine ordentliche Kündigung während dieser
+        Laufzeit ist ausgeschlossen — die Begleitung ist auf diesen Zeitraum ausgelegt und
+        ergibt in Teilen keinen Sinn. Das Recht zur außerordentlichen Kündigung aus
+        wichtigem Grund bleibt davon unberührt. Wenn Sie sich nicht sechs Monate binden
+        wollen, sagen Sie das im Erstgespräch — dann sind wir der falsche Anbieter.</p>
       </details>
       <details class="faq__eintrag">
         <summary>Arbeiten Sie auch mit Privatpersonen?</summary>
@@ -1178,8 +1276,6 @@ wertvoller als Werbetext.
       <dl class="kontakt__daten">
         <dt>E-Mail</dt>
         <dd><a href="mailto:office@capitalcouncilmarketing.com">office@capitalcouncilmarketing.com</a></dd>
-        <dt>Telefon</dt>
-        <dd><!-- Eingabe 4 --></dd>
         <dt>Anschrift</dt>
         <dd>28 Capital Council LLC<br>Sheridan, WY 82801<br>Vereinigte Staaten</dd>
       </dl>
