@@ -1,0 +1,127 @@
+@import url("./assets/fonts/fonts.css");
+
+:root {
+  --bg: #F7F9FC;
+  --flaeche: #FFFFFF;
+  --rand: #E3E8EF;
+  --text: #0A2540;
+  --text-leise: #5B6B7F;
+  --primaer: #1B5FCC;
+  --akzent: #E8F0FE;
+  --breite: 1200px;
+  --abstand-abschnitt: 140px;
+  --radius: 12px;
+  --radius-pill: 999px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+h2 { font-size: clamp(1.9rem, 4vw, 3rem); }
+h3 { font-size: 1.35rem; }
+
+p { margin: 0 0 1.1em; max-width: 65ch; }
+a { color: var(--primaer); }
+
+.container {
+  width: 100%;
+  max-width: var(--breite);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.abschnitt { padding: var(--abstand-abschnitt) 0; }
+.abschnitt--akzent { background: var(--akzent); }
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primaer);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.knopf {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--rand);
+  background: var(--flaeche);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.knopf:hover { border-color: var(--primaer); }
+
+.knopf-primaer {
+  background: var(--primaer);
+  border-color: var(--primaer);
+  color: #fff;
+}
+
+.knopf-primaer:hover { background: #164FA8; border-color: #164FA8; }
+
+.karte {
+  background: var(--flaeche);
+  border: 1px solid var(--rand);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+
+/* Einheitliche Bildbehandlung: laesst Stockmaterial verschiedener Herkunft
+   wie eine Serie wirken. Statt die Dateien zu bearbeiten, liegt der Blaustich
+   als Ueberlagerung darueber. */
+.bild {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  /* Rückfallebene: Solange ein Foto fehlt, zeigt die Fläche einen ruhigen
+     Verlauf in den Markenfarben statt eines kaputten Bildsymbols. */
+  background: linear-gradient(135deg, var(--akzent) 0%, #C9DBF7 55%, var(--primaer) 100%);
+}
+
+.bild img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.7) contrast(1.02);
+}
+
+.bild::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--primaer);
+  opacity: 0.16;
+  mix-blend-mode: color;
+  pointer-events: none;
+}
+
+@media (max-width: 720px) {
+  :root { --abstand-abschnitt: 80px; }
+  body { font-size: 16px; }
+  .karte { padding: 24px; }
+}
