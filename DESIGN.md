@@ -100,8 +100,53 @@ Aus `styles.css`:
 - `.liste` — Aufzählung ohne Standard-Margin, Text in `--text-leise`, 10px Abstand zwischen Einträgen
 
 Kopf- und Fußzeile (`.kopf`, `.kopf__inner`, `.marke`, `.nav`, `.fuss`,
-`.fuss__marke`, `.fuss__links`) sowie die Hero-Klassen (`.hero`, `.hero__inner`,
-`.hero__lead`, `.hero__hinweis`, `.hero__bild`) und `.rechtstext` für die
-Rechtsseiten runden das System ab, folgen aber denselben Tokens und Bausteinen
-oben — mit der einen Ausnahme, dass `.kopf` seinen Hintergrund hart codiert
-statt über ein Token setzt (siehe Abschnitt „Farben" oben).
+`.fuss__marke`, `.fuss__traeger`, `.fuss__links`) sowie die Hero-Klassen
+(`.hero`, `.hero__inner`, `.hero__lead`, `.hero__hinweis`, `.hero__bild`) und
+`.rechtstext` für die Rechtsseiten runden das System ab, folgen aber denselben
+Tokens und Bausteinen oben — mit der einen Ausnahme, dass `.kopf` seinen
+Hintergrund hart codiert statt über ein Token setzt (siehe Abschnitt „Farben"
+oben). `.fuss__traeger` (Zeile 172) setzt lediglich `font-size: 14px` und
+`margin: 0` für die Rechtsträgerzeile unter der Marke im Footer.
+
+## Methode-Abschnitt: Phasen und Begleitung
+
+- `.phasen` — Grid für die fünf Vorgehens-Karten, `repeat(auto-fit,
+  minmax(280px, 1fr))`, 24px Abstand, 48px vertikaler Außenabstand
+- `.phase__nr` — die Phasennummer (01–05) in Source Serif 4, 2rem, `--primaer`,
+  8px Abstand zur Überschrift darunter
+- `.begleitung` — Wrapper für die Liste „Womit wir Sie begleiten“, oberer Rand
+  in `--rand`, 32px Innenabstand oben, 48px Außenabstand oben
+
+## Preis-Abschnitt
+
+- `.paket__preis` — der Preis in großer Source Serif 4, 2.6rem, ohne
+  Standard-Margin
+- `.paket__hinweis` — Zusatzhinweis unter dem Preis (z. B. „zzgl.
+  Umsatzsteuer“), `--text-leise`, 14px
+- `.kondition` — Definitionsliste für Laufzeit/Zahlung/Kündigung: zweispaltiges
+  Grid (`auto 1fr`), oberer Rand in `--rand`, 16px Innenabstand oben
+- `.preis__fuss` — Fußnotentext unter den Paketen, 14px, `--text-leise`,
+  `max-width: 80ch`, 32px Außenabstand oben
+
+## Über-uns-Abschnitt
+
+- `.ueber__inner` — begrenzt den Fließtext auf `max-width: 70ch`
+- `.ueber__haltung` — hervorgehobener Absatz mit linkem Rahmen in `--primaer`,
+  20px Innenabstand links, `--text-leise`, 32px Außenabstand oben
+
+## FAQ
+
+- `.faq` — Wrapper der FAQ-Liste, oberer Rand in `--rand`, 40px Außenabstand
+  oben
+- `.faq__eintrag` — einzelnes `<details>`-Element: unterer Rand in `--rand`,
+  20px vertikaler Innenabstand. Das native Dreieck von `<summary>` wird über
+  `list-style: none` bzw. `::-webkit-details-marker { display: none }`
+  entfernt und durch ein eigenes `+`/`−`-Zeichen (`::after`) ersetzt, das beim
+  geöffneten Zustand (`[open]`) wechselt
+
+## Kontakt-Abschnitt
+
+- `.kontakt__inner` — zweispaltiges Grid (`1fr 1fr`), 56px Abstand, fällt
+  unter 900px auf eine Spalte
+- `.kontakt__daten` — Definitionsliste für E-Mail/Anschrift: zweispaltiges
+  Grid (`auto 1fr`), 32px Außenabstand oben, 15px Schriftgröße

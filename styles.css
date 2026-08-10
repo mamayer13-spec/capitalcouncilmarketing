@@ -169,6 +169,8 @@ a { color: var(--primaer); }
   margin-bottom: 4px;
 }
 
+.fuss__traeger { font-size: 14px; margin: 0; }
+
 .fuss__links { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 16px; }
 
 @media (max-width: 720px) {
